@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ public class lloguer extends Activity {
 	EditText etSoci,etActivitat,etFianca,etCobrat,etLloguer,etRetorn,etMaterial;
 	Button btAddMaterial,btMaterialBack ,btLloguer ,btCancel;
 	Spinner spActivitat;
+	LinearLayout afegirMaterial;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class lloguer extends Activity {
         spActivitat=(Spinner) findViewById(R.id.spActivitat);
         etLloguer=(EditText) findViewById(R.id.etLloguer);
         tvRetorn=(EditText) findViewById(R.id.tvRetorn);
-        
+        LinearLayout afegirMaterial = (LinearLayout) findViewById(R.id.afegirMaterial);
         
         //
     	//Creació del Spinner de tipus d'activitat
@@ -121,10 +123,70 @@ public class lloguer extends Activity {
         return formateador.format(ahora);
     }
 	
+    private void realitza_lloguer(){
     
-	private void afegeixElements(){
+    	//cridar sql
+    	//cridar activitat llista
+    	
+    }
+    
+    
+/*	private void afegeixElements(){
 		
-	}
+		LinearLayout myLayout = new LinearLayout(this);
+		EditText myEditText = new EditText(this);
+		Button myButton = new Button(this);
+		Button myButton2 = new Button(this);
+		
+		myButton.setText("Press Me");
+		
+		myLayout.addView(myEditText);
+		myLayout.addView(myButton);
+		myLayout.addView(myButton2);
+		
+		afegirMaterial.addView(myLayout);
+			
+	}*/
+	
+	
+	/*
+	 * <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+          
+	    <TextView
+        android:id="@+id/tvMaterial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Material"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <EditText
+	        android:id="@+id/etMaterial"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:ems="10">
+	        <requestFocus />
+	    </EditText>
+	    
+	    <Button
+	        android:id="@+id/btAddMaterial"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Afegir un altre Material" 
+	        android:onClick="afegeixElements"/>
+	    <Button
+	        android:id="@+id/btMaterialBack"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Tornat" 
+	        android:onClick="dataUnMaterial"/>
+	     
+    </LinearLayout>
+	 */
+	
+	
 	
 	
 }
