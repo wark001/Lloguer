@@ -3,7 +3,10 @@
 
     <string name="app_name">Lloguer</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="borrar">Borrar</string>
+    <string name="editar">Editar</string>
+    <string name="nueva">Nova</string>
+    <string name="buscar">Buscar</string>
 
     <string-array name="tipusActivitat">
         <item >Ent. Exp. Entrenament expedicions, no es cobra lloguer.</item>

@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -18,8 +20,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class lloguer extends Activity {
+import com.lloguer.clases.Lloguer;
+import com.lloguer.clases.IdeasDataSource;
+
+public class funcionsLloguer extends Activity {
 
 	Calendar dataLloguer = Calendar.getInstance();
 	Calendar dataRetorn = Calendar.getInstance();
@@ -30,6 +36,17 @@ public class lloguer extends Activity {
 	Button btAddMaterial,btMaterialBack ,btLloguer ,btCancel;
 	Spinner spActivitat;
 	LinearLayout afegirMaterial;
+	
+	//afegit
+	public final static String MODO = "MODO";
+	public final static String ID_IDEA = "_ID";	
+	public final static int MODO_NUEVA_IDEA = 0;
+	public final static int MODO_EDITAR_IDEA = 1;
+	private IdeasDataSource ideasDataSource;
+	private int MODO_ACTUAL = 0;
+	private Intent intentIdeasActivity = null;
+	// Variable para "recordar" el identificador de la Idea que se está editando 
+	private long idIdea;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +66,18 @@ public class lloguer extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spActivitat.setAdapter(adapter);
         
+        //afegit
+        intentIdeasActivity = new Intent(this, llistat.class);
+		intentIdeasActivity.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
+		
+		Bundle bundle = getIntent().getExtras();        
+        MODO_ACTUAL = bundle.getInt(MODO);
         
+        ideasDataSource = new IdeasDataSource(this);
+		ideasDataSource.open();
+		
+        if (MODO_ACTUAL == MODO_EDITAR_IDEA)        		
+        	cargarIdea(bundle.getLong(ID_IDEA));
     }
 
 
@@ -75,7 +103,7 @@ public class lloguer extends Activity {
 		}
 	};
 	public void fucnioDataLloguer(View v) {
-		new DatePickerDialog(lloguer.this, dataDialogLloguer, dataLloguer.get(Calendar.YEAR), dataLloguer.get(Calendar.MONTH), dataLloguer.get(Calendar.DAY_OF_MONTH)).show();
+		new DatePickerDialog(funcionsLloguer.this, dataDialogLloguer, dataLloguer.get(Calendar.YEAR), dataLloguer.get(Calendar.MONTH), dataLloguer.get(Calendar.DAY_OF_MONTH)).show();
 	}
 	private void actualizarDataLloguer() {
 		DateFormat formatoFecha = DateFormat.getDateInstance();
@@ -86,7 +114,7 @@ public class lloguer extends Activity {
     //funcions que realitzen la entrada d'una data al camps de retorn de lloguer
     //
 	public void fucnioDataRetorn(View v) {
-		new DatePickerDialog(lloguer.this, dataDialogRetorn, dataRetorn.get(Calendar.YEAR), dataRetorn.get(Calendar.MONTH), dataRetorn.get(Calendar.DAY_OF_MONTH)).show();
+		new DatePickerDialog(funcionsLloguer.this, dataDialogRetorn, dataRetorn.get(Calendar.YEAR), dataRetorn.get(Calendar.MONTH), dataRetorn.get(Calendar.DAY_OF_MONTH)).show();
 	}
 	OnDateSetListener dataDialogRetorn =new OnDateSetListener (){
 		@Override
@@ -131,62 +159,81 @@ public class lloguer extends Activity {
     }
     
     
-/*	private void afegeixElements(){
-		
-		LinearLayout myLayout = new LinearLayout(this);
-		EditText myEditText = new EditText(this);
-		Button myButton = new Button(this);
-		Button myButton2 = new Button(this);
-		
-		myButton.setText("Press Me");
-		
-		myLayout.addView(myEditText);
-		myLayout.addView(myButton);
-		myLayout.addView(myButton2);
-		
-		afegirMaterial.addView(myLayout);
-			
-	}*/
-	
-	
-	/*
-	 * <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-          
-	    <TextView
-        android:id="@+id/tvMaterial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Material"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    @Override
+	protected void onResume() {
+		ideasDataSource.open();	
+		super.onResume();
+	}
 
-	    <EditText
-	        android:id="@+id/etMaterial"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:ems="10">
-	        <requestFocus />
-	    </EditText>
-	    
-	    <Button
-	        android:id="@+id/btAddMaterial"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Afegir un altre Material" 
-	        android:onClick="afegeixElements"/>
-	    <Button
-	        android:id="@+id/btMaterialBack"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Tornat" 
-	        android:onClick="dataUnMaterial"/>
-	     
-    </LinearLayout>
-	 */
+	@Override
+	protected void onPause() {
+		ideasDataSource.close();
+		super.onPause();
+	}
 	
-	
-	
-	
+	private void cargarIdea(long idIdea) {
+		// Se obtiene la idea a editar
+		Lloguer lloguer = ideasDataSource.getIdea(idIdea);
+		this.idIdea = lloguer.getId();
+		
+		// Se vuelca su información en el formulario
+	/*	((EditText) findViewById(R.id.tituloIdea)).setText(idea.getTituloIdea());
+		((EditText) findViewById(R.id.textoIdea)).setText(idea.getTextoIdea());		
+		((Spinner) findViewById(R.id.spinnerImportanciaIdea)).setSelection(idea.getImportancia());
+		((EditText) findViewById(R.id.editText1)).setText(idea.getFecha());
+		((EditText) findViewById(R.id.editText2)).setText(idea.getMail());
+		((EditText) findViewById(R.id.editText3)).setText(idea.getTelefono());
+		*/
+	}
+    /*
+     public void guardar(View view) {
+		
+		Idea idea = new Idea();
+		
+		String tituloIdea = ((EditText) findViewById(R.id.tituloIdea)).getText().toString();
+		String textoIdea = ((EditText) findViewById(R.id.textoIdea)).getText().toString();
+		String editText1 = ((EditText) findViewById(R.id.editText1)).getText().toString();
+		String editText2 = ((EditText) findViewById(R.id.editText2)).getText().toString();
+		String editText3 = ((EditText) findViewById(R.id.editText3)).getText().toString();
+		int importancia = ((Spinner) findViewById(R.id.spinnerImportanciaIdea)).getSelectedItemPosition();
+		
+		
+		if (tituloIdea.equals("") || 
+				textoIdea.equals("") || 
+				editText1.equals("") || 
+				editText2.equals("") || 
+				editText3.equals("") )
+			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
+		else {
+			
+			idea.setId(idIdea);
+			idea.setTituloIdea(tituloIdea);
+			idea.setTextoIdea(textoIdea);
+			idea.setImportancia(importancia);
+			
+			//Marc
+			idea.setFecha(editText1);
+			idea.setMail(editText2);
+			idea.setTelefono(editText3);
+			
+			switch (MODO_ACTUAL) {
+			case MODO_NUEVA_IDEA:
+				ideasDataSource.createIdea(tituloIdea, textoIdea, importancia,editText1,editText2,editText3);
+				break;
+			case MODO_EDITAR_IDEA:
+				ideasDataSource.updateIdea(idea);
+				break;
+			default:
+				break;
+			}			
+			
+			// Se vuelve a la actividad anterior, sin invocar a una nueva instancia de la misma.
+			// (Otra opción sería invocar a finish(), ya que esta actividad ya no se 
+			// utilizará hasta que se vuelva a solicitar desde la lista de ideas, aunque sería 
+			// menos eficiente si se consultan muchas ideas)			
+			startActivity(intentIdeasActivity);
+		}
+	}
+     */
 }
+   
