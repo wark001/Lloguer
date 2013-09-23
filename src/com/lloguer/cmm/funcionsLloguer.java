@@ -56,7 +56,7 @@ public class funcionsLloguer extends Activity {
         //crida de les variables que fem servir
         spActivitat=(Spinner) findViewById(R.id.spActivitat);
         etLloguer=(EditText) findViewById(R.id.etLloguer);
-        tvRetorn=(EditText) findViewById(R.id.tvRetorn);
+        etRetorn=(EditText) findViewById(R.id.etRetorn);
         LinearLayout afegirMaterial = (LinearLayout) findViewById(R.id.afegirMaterial);
         
         //
@@ -76,8 +76,9 @@ public class funcionsLloguer extends Activity {
         ideasDataSource = new IdeasDataSource(this);
 		ideasDataSource.open();
 		
-        if (MODO_ACTUAL == MODO_EDITAR_IDEA)        		
+        if (MODO_ACTUAL == MODO_EDITAR_IDEA){        		
         	cargarIdea(bundle.getLong(ID_IDEA));
+        }
     }
 
 
@@ -92,6 +93,9 @@ public class funcionsLloguer extends Activity {
     //
     //funcions que realitzen la entrada d'una data al camps de lloguer
     //
+    public void fucnioDataLloguer(View v) {
+		new DatePickerDialog(funcionsLloguer.this, dataDialogLloguer, dataLloguer.get(Calendar.YEAR), dataLloguer.get(Calendar.MONTH), dataLloguer.get(Calendar.DAY_OF_MONTH)).show();
+	}
     OnDateSetListener dataDialogLloguer =new OnDateSetListener (){
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -102,12 +106,10 @@ public class funcionsLloguer extends Activity {
 			actualizarDataLloguer();		
 		}
 	};
-	public void fucnioDataLloguer(View v) {
-		new DatePickerDialog(funcionsLloguer.this, dataDialogLloguer, dataLloguer.get(Calendar.YEAR), dataLloguer.get(Calendar.MONTH), dataLloguer.get(Calendar.DAY_OF_MONTH)).show();
-	}
+	
 	private void actualizarDataLloguer() {
 		DateFormat formatoFecha = DateFormat.getDateInstance();
-		etLloguer.setText(formatoFecha.format((dataLloguer.getTime())));	
+	//	etLloguer.setText(formatoFecha.format((dataLloguer.getTime())));	
 	}
 	
 	//

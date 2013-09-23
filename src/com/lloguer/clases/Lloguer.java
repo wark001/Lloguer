@@ -11,7 +11,7 @@ public class Lloguer {
 	private String dataLloguer;
 	private String dataTornat;
 	
-	public Lloguer(Soci idSoci,Material idMaterial,String tipusActivitat,String fianca,String cobrat,String dataLloguer,String dataTornat){
+/*	public Lloguer(Soci idSoci,Material idMaterial,String tipusActivitat,String fianca,String cobrat,String dataLloguer,String dataTornat){
 		
 		this.idSoci=idSoci;
 		this.idMaterial=idMaterial;
@@ -21,7 +21,7 @@ public class Lloguer {
 		this.dataLloguer=dataLloguer;
 		this.dataTornat=dataTornat;
 		
-	}
+	}*/
 	
 	public long getId() {
 		return id;

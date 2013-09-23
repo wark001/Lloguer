@@ -90,7 +90,7 @@ public class IdeasDataSource {
 		// y se crea un ContentValues con los nuevos valores de la idea
 		long idIdea = lloguer.getId();		
 		ContentValues valores = new ContentValues();
-		valores.put(IdeasDatabaseHelper.COLUMN_TITULO_IDEA, lloguer.getTituloIdea());
+	/*	valores.put(IdeasDatabaseHelper.COLUMN_TITULO_IDEA, lloguer.getTituloIdea());
 		valores.put(IdeasDatabaseHelper.COLUMN_TEXTO_IDEA, lloguer.getTextoIdea());
 		valores.put(IdeasDatabaseHelper.COLUMN_IMPORTANCIA, lloguer.getImportancia());
 		
@@ -98,7 +98,7 @@ public class IdeasDataSource {
 				valores.put(IdeasDatabaseHelper.COLUMN_FECHA, lloguer.getFecha());
 				valores.put(IdeasDatabaseHelper.COLUMN_MAIL, lloguer.getFecha());
 				valores.put(IdeasDatabaseHelper.COLUMN_TELEFONO, lloguer.getFecha());
-				
+	*/			
 		baseDeDatos.update(IdeasDatabaseHelper.TABLE_IDEAS, valores, IdeasDatabaseHelper.COLUMN_ID + " = " + idIdea, null);
 
 		Log.i(IdeasDataSource.class.getName(), "Idea con id: " + idIdea + " actualizada correctamente.");
@@ -161,13 +161,13 @@ public class IdeasDataSource {
 		
 		Lloguer lloguer = new Lloguer();
 		lloguer.setId(cursor.getLong(0));
-		lloguer.setTituloIdea(cursor.getString(1));
+	/*	lloguer.setTituloIdea(cursor.getString(1));
 		lloguer.setTextoIdea(cursor.getString(2));
 		lloguer.setImportancia(cursor.getInt(3));
 		//Marc
 		lloguer.setFecha(cursor.getString(4));
 		lloguer.setMail(cursor.getString(5));
 		lloguer.setTelefono(cursor.getString(6));
-		return lloguer;
+	*/	return lloguer;
 	}
 }

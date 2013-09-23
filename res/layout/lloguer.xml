@@ -22,7 +22,7 @@
 	        android:layout_weight="1"
 	        android:ems="10"
 	        android:inputType="textPersonName" >
-	        <requestFocus />
+	        
 	    </EditText>
 	    
     </LinearLayout>
@@ -62,7 +62,7 @@
 	        android:layout_weight="1"
 	        android:ems="10"
 	        android:inputType="number">
-	        <requestFocus />
+	        
 	    </EditText>
 	  </LinearLayout>  
 	  <LinearLayout
@@ -83,7 +83,7 @@
 	        android:layout_weight="1"
 	        android:ems="10"
 	        android:inputType="number">
-	        <requestFocus />
+	        
 	    </EditText>
 	 </LinearLayout> 
 	 <LinearLayout
@@ -104,7 +104,7 @@
 	        android:layout_weight="1"
 	        android:ems="10"
 	        android:onClick="fucnioDataLoguer">
-	        <requestFocus />
+	        
 	    </EditText>
 	    
     </LinearLayout>
@@ -126,7 +126,7 @@
 	        android:layout_weight="1"
 	        android:ems="10"
 	        android:onClick="fucnioDataRetorn">
-	        <requestFocus />
+	        
 	    </EditText>
 
 	    <Button
@@ -162,7 +162,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
 	        android:ems="10">
-	        <requestFocus />
+	        
 	    </EditText>
 	    
 	    <Button

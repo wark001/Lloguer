@@ -30,7 +30,9 @@ public class llistat extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-
+		//super.onCreate(savedInstanceState);
+        //setContentView(R.layout.main);
+        
 		// La lista de items se carga en un array. Los elementos a cargar están
 		// en el archivo strings.xml
 		ideasDataSource = new IdeasDataSource(this);
@@ -177,7 +179,8 @@ public class llistat extends ListActivity {
 	private void nuevaIdea() {    	
 		Intent intent = new Intent(this, funcionsLloguer.class);
 		Bundle bundle = new Bundle();	
-		bundle.putInt(funcionsLloguer.MODO, funcionsLloguer.MODO_NUEVA_IDEA);
+		//---------------------------------------------------------------------------------------------------
+	//	bundle.putInt(funcionsLloguer.MODO, funcionsLloguer.MODO_NUEVA_IDEA);
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}
