@@ -13,24 +13,16 @@ public class IdeasDatabaseHelper extends SQLiteOpenHelper {
 	
 	public static final String TABLE_IDEAS = "ideas";
 	public static final String COLUMN_ID = "_id";
-	public static final String COLUMN_TITULO_IDEA = "titulo_idea";
-	public static final String COLUMN_TEXTO_IDEA = "texto_idea";
-	public static final String COLUMN_IMPORTANCIA = "importancia";
-	//Marc
-	public static final String COLUMN_FECHA= "fecha";
-	public static final String COLUMN_MAIL="mail"; 
-	public static final String COLUMN_TELEFONO="telefono";
+	public static final String COLUMN_SOCI = "nom_soci";
+	public static final String COLUMN_FIANCA = "fianca_material";
+	
 
 	// Sentencia para la creación de la base de datos (crea la tabla)
 	private static final String DATABASE_CREATE = "create table "
 			+ TABLE_IDEAS + "(" 
 			+ COLUMN_ID + " integer primary key autoincrement, " 
-			+ COLUMN_TITULO_IDEA + " text not null, " 
-			+ COLUMN_TEXTO_IDEA  + " text not null, " 
-			+ COLUMN_IMPORTANCIA + " integer not null, " 
-			+ COLUMN_FECHA + " text not null, " 
-			+ COLUMN_MAIL + " text not null, "
-			+ COLUMN_TELEFONO  + " text not null);";
+			+ COLUMN_SOCI + " text not null, " 
+			+ COLUMN_FIANCA  + " text not null, ";
 
 	// Constructor que deberá invocar a super()
 	public IdeasDatabaseHelper(Context context) {

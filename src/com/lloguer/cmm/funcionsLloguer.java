@@ -27,8 +27,8 @@ import com.lloguer.clases.IdeasDataSource;
 
 public class funcionsLloguer extends Activity {
 
-	Calendar dataLloguer = Calendar.getInstance();
-	Calendar dataRetorn = Calendar.getInstance();
+	Calendar dataLloguer = Calendar.getInstance();  //lloguer
+	Calendar dataRetorn = Calendar.getInstance(); //retorn
 	
 	//variables del layout
 	TextView tvSoci,tvActivitat,tvFianca,tvCobrat,tvLloguer,tvRetorn,tvMaterial;
@@ -57,6 +57,7 @@ public class funcionsLloguer extends Activity {
         spActivitat=(Spinner) findViewById(R.id.spActivitat);
         etLloguer=(EditText) findViewById(R.id.etLloguer);
         etRetorn=(EditText) findViewById(R.id.etRetorn);
+        etMaterial=(EditText) findViewById(R.id.etMaterial);
         LinearLayout afegirMaterial = (LinearLayout) findViewById(R.id.afegirMaterial);
         
         //
@@ -94,7 +95,8 @@ public class funcionsLloguer extends Activity {
     //funcions que realitzen la entrada d'una data al camps de lloguer
     //
     public void fucnioDataLloguer(View v) {
-		new DatePickerDialog(funcionsLloguer.this, dataDialogLloguer, dataLloguer.get(Calendar.YEAR), dataLloguer.get(Calendar.MONTH), dataLloguer.get(Calendar.DAY_OF_MONTH)).show();
+		new DatePickerDialog(funcionsLloguer.this, dataDialogLloguer, dataLloguer.get(Calendar.YEAR), 
+				dataLloguer.get(Calendar.MONTH), dataLloguer.get(Calendar.DAY_OF_MONTH)).show();
 	}
     OnDateSetListener dataDialogLloguer =new OnDateSetListener (){
 		@Override
@@ -109,14 +111,15 @@ public class funcionsLloguer extends Activity {
 	
 	private void actualizarDataLloguer() {
 		DateFormat formatoFecha = DateFormat.getDateInstance();
-	//	etLloguer.setText(formatoFecha.format((dataLloguer.getTime())));	
+		etLloguer.setText(formatoFecha.format((dataLloguer.getTime())));	
 	}
 	
 	//
     //funcions que realitzen la entrada d'una data al camps de retorn de lloguer
     //
 	public void fucnioDataRetorn(View v) {
-		new DatePickerDialog(funcionsLloguer.this, dataDialogRetorn, dataRetorn.get(Calendar.YEAR), dataRetorn.get(Calendar.MONTH), dataRetorn.get(Calendar.DAY_OF_MONTH)).show();
+		new DatePickerDialog(funcionsLloguer.this, dataDialogRetorn, dataRetorn.get(Calendar.YEAR), 
+				dataRetorn.get(Calendar.MONTH), dataRetorn.get(Calendar.DAY_OF_MONTH)).show();
 	}
 	OnDateSetListener dataDialogRetorn =new OnDateSetListener (){
 		@Override
@@ -130,20 +133,21 @@ public class funcionsLloguer extends Activity {
 	};
 	private void actualizarDataRetorn() {
 		DateFormat formatoFecha = DateFormat.getDateInstance();
-		etRetorn.setText(formatoFecha.format((dataLloguer.getTime())));	
+		etRetorn.setText(formatoFecha.format((dataRetorn.getTime())));	
 	}
 	
 	//
 	//Funcions bottons
 	//
-	//borra data d'arribada
-	private void borrarDataRetorn() {
+	//borra data de retorn
+	public void borrarDataRetorn(View v) {
 		etRetorn.setText("");	
 	}
 	
 	//afegeix la data a la qual es va tornar un material i no permet modifica
-	private void dataUnMaterial(){
-		etRetorn.setText(etRetorn.getText().toString()+" Material tornat el: "+getFechaActual());
+	public void dataUnMaterial(View v){
+		//etMaterial
+		etMaterial.setText(etMaterial.getText().toString()+" Material tornat el: "+getFechaActual().toString());
 	}
 	//Metodo usado para obtener la fecha actual
     //@return Retorna un <b>STRING</b> con la fecha actual formato "dd-MM-yyyy"
@@ -153,14 +157,13 @@ public class funcionsLloguer extends Activity {
         return formateador.format(ahora);
     }
 	
-    private void realitza_lloguer(){
+    public void realitza_lloguer(){
     
     	//cridar sql
     	//cridar activitat llista
     	
     }
-    
-    
+
     @Override
 	protected void onResume() {
 		ideasDataSource.open();	
@@ -173,7 +176,45 @@ public class funcionsLloguer extends Activity {
 		super.onPause();
 	}
 	
-	private void cargarIdea(long idIdea) {
+	public void backToList(View v){
+		this.finish();
+	}
+	
+	public void guardar(View view) {
+		
+		Lloguer intanciaLloguer = new Lloguer();
+		
+		etFianca = (EditText) findViewById(R.id.etFianca);
+		etSoci = (EditText) findViewById(R.id.etSoci);
+		
+		if (etSoci.getText().toString().equals("") || 
+				etFianca.getText().toString().equals(""))
+			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
+		else {
+			
+			intanciaLloguer.setSoci(etSoci.getText().toString());//idea
+			intanciaLloguer.setFianca(etFianca.getText().toString());//idea
+			
+			switch (MODO_ACTUAL) {
+			case MODO_NUEVA_IDEA:
+				ideasDataSource.createIdea(etSoci.getText().toString(), etFianca.getText().toString());
+				break;
+			case MODO_EDITAR_IDEA:
+				ideasDataSource.updateIdea(intanciaLloguer);
+				break;
+			default:
+				break;
+			}			
+			
+			// Se vuelve a la actividad anterior, sin invocar a una nueva instancia de la misma.
+			// (Otra opción sería invocar a finish(), ya que esta actividad ya no se 
+			// utilizará hasta que se vuelva a solicitar desde la lista de ideas, aunque sería 
+			// menos eficiente si se consultan muchas ideas)			
+			startActivity(intentIdeasActivity);
+		}
+	}
+	
+	public void cargarIdea(long idIdea) {
 		// Se obtiene la idea a editar
 		Lloguer lloguer = ideasDataSource.getIdea(idIdea);
 		this.idIdea = lloguer.getId();
@@ -239,3 +280,35 @@ public class funcionsLloguer extends Activity {
      */
 }
    
+
+/*
+public void guardar(View view) {
+		etFianca = (EditText) findViewById(R.id.etFianca);
+		etSoci = (EditText) findViewById(R.id.etSoci);
+		
+		if (etSoci.getText().toString().equals("") || 
+				etFianca.getText().toString().equals(""))
+			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
+		else {
+			
+			Lloguer intanciaLloguer = new Lloguer(etSoci.getText().toString(), etFianca.getText().toString());
+			
+			switch (MODO_ACTUAL) {
+			case MODO_NUEVA_IDEA:
+				ideasDataSource.createIdea(tituloIdea, textoIdea, importancia,editText1,editText2,editText3);
+				break;
+			case MODO_EDITAR_IDEA:
+				ideasDataSource.updateIdea(idea);
+				break;
+			default:
+				break;
+			}			
+			
+			// Se vuelve a la actividad anterior, sin invocar a una nueva instancia de la misma.
+			// (Otra opción sería invocar a finish(), ya que esta actividad ya no se 
+			// utilizará hasta que se vuelva a solicitar desde la lista de ideas, aunque sería 
+			// menos eficiente si se consultan muchas ideas)			
+			startActivity(intentIdeasActivity);
+		}
+	}
+*/

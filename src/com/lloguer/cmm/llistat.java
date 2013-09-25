@@ -180,7 +180,7 @@ public class llistat extends ListActivity {
 		Intent intent = new Intent(this, funcionsLloguer.class);
 		Bundle bundle = new Bundle();	
 		//---------------------------------------------------------------------------------------------------
-	//	bundle.putInt(funcionsLloguer.MODO, funcionsLloguer.MODO_NUEVA_IDEA);
+		bundle.putInt(funcionsLloguer.MODO, funcionsLloguer.MODO_NUEVA_IDEA);
 		intent.putExtras(bundle);
 		startActivity(intent);
 	}

@@ -17,13 +17,9 @@ public class IdeasDataSource {
 	private IdeasDatabaseHelper dbHelper;
 	private String[] todasLasColumnas = { 
 			IdeasDatabaseHelper.COLUMN_ID,
-			IdeasDatabaseHelper.COLUMN_TITULO_IDEA, 
-			IdeasDatabaseHelper.COLUMN_TEXTO_IDEA, 
-			IdeasDatabaseHelper.COLUMN_IMPORTANCIA,
-			//Marc
-			IdeasDatabaseHelper.COLUMN_FECHA, 
-			IdeasDatabaseHelper.COLUMN_MAIL, 
-			IdeasDatabaseHelper.COLUMN_TELEFONO
+			IdeasDatabaseHelper.COLUMN_SOCI, 
+			IdeasDatabaseHelper.COLUMN_FIANCA, 
+
 			};
 
 	// Constructor que inicializa el DAO, 
@@ -47,13 +43,9 @@ public class IdeasDataSource {
 		
 		// Esta clase se usa para almacenar un conjunto de valores que el ContentResolver podrá procesar. 
 		ContentValues valores = new ContentValues();
-		valores.put(IdeasDatabaseHelper.COLUMN_TITULO_IDEA, tituloIdea);
-		valores.put(IdeasDatabaseHelper.COLUMN_TEXTO_IDEA, textoIdea);
-		valores.put(IdeasDatabaseHelper.COLUMN_IMPORTANCIA, importancia);
-		//Marc
-		valores.put(IdeasDatabaseHelper.COLUMN_FECHA, fecha);
-		valores.put(IdeasDatabaseHelper.COLUMN_MAIL, mail);
-		valores.put(IdeasDatabaseHelper.COLUMN_TELEFONO, telefono);
+		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, tituloIdea);
+		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, textoIdea);
+
 		
 		// Inserción en base de datos. El método insert() devolverá la primary key (columna _id)
 		// que se autogenera al insertar.

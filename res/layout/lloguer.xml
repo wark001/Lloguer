@@ -4,6 +4,13 @@
         android:layout_alignParentLeft="true"
         android:orientation="vertical" >
  
+    <Button
+	        android:id="@+id/btCancel"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="Torna a la llista" 
+	        android:onClick="backToList"/>
+    
 	<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -103,7 +110,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_weight="1"
 	        android:ems="10"
-	        android:onClick="fucnioDataLoguer">
+	        android:onClick="fucnioDataLloguer">
 	        
 	    </EditText>
 	    
@@ -133,8 +140,8 @@
 	        android:id="@+id/btEraseData"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="Borrar data" 
-	        android:onClick="borrarDataRetorn"/>
+	        android:onClick="borrarDataRetorn"
+	        android:text="Borrar data" />
 	    
     </LinearLayout>
 
@@ -145,7 +152,7 @@
         android:id="@+id/afegirMaterial">
    
 
-<LinearLayout
+	<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
           
@@ -180,23 +187,12 @@
 	     
     </LinearLayout>
      </LinearLayout>
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
 	    <Button
 	        android:id="@+id/btLloguer"
-	        android:layout_width="wrap_content"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:text="Realitzar lloguer" 
 	        android:onClick="realitza_lloguer"/>
-
-	    <Button
-	        android:id="@+id/btCancel"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="Cancel·lar" />
-
-    </LinearLayout>
     
 </LinearLayout>

@@ -7,6 +7,7 @@
     <string name="editar">Editar</string>
     <string name="nueva">Nova</string>
     <string name="buscar">Buscar</string>
+    <string name="rellena_campos_idea">Omple tots els camps</string>
 
     <string-array name="tipusActivitat">
         <item >Ent. Exp. Entrenament expedicions, no es cobra lloguer.</item>

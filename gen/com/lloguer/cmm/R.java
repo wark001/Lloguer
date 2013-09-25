@@ -27,30 +27,30 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int afegirMaterial=0x7f09000c;
+        public static final int afegirMaterial=0x7f09000d;
         public static final int borrar=0x7f090017;
-        public static final int btAddMaterial=0x7f09000f;
-        public static final int btCancel=0x7f090012;
-        public static final int btEraseData=0x7f09000b;
-        public static final int btLloguer=0x7f090011;
-        public static final int btMaterialBack=0x7f090010;
+        public static final int btAddMaterial=0x7f090010;
+        public static final int btCancel=0x7f090000;
+        public static final int btEraseData=0x7f09000c;
+        public static final int btLloguer=0x7f090012;
+        public static final int btMaterialBack=0x7f090011;
         public static final int buscar=0x7f090015;
         public static final int button1=0x7f090013;
         public static final int editar=0x7f090016;
-        public static final int etCobrat=0x7f090006;
-        public static final int etFianca=0x7f090004;
-        public static final int etLloguer=0x7f090008;
-        public static final int etMaterial=0x7f09000e;
-        public static final int etRetorn=0x7f09000a;
-        public static final int etSoci=0x7f090001;
+        public static final int etCobrat=0x7f090007;
+        public static final int etFianca=0x7f090005;
+        public static final int etLloguer=0x7f090009;
+        public static final int etMaterial=0x7f09000f;
+        public static final int etRetorn=0x7f09000b;
+        public static final int etSoci=0x7f090002;
         public static final int nueva=0x7f090014;
-        public static final int spActivitat=0x7f090003;
-        public static final int tvActivitat=0x7f090002;
-        public static final int tvCobrat=0x7f090005;
-        public static final int tvLloguer=0x7f090007;
-        public static final int tvMaterial=0x7f09000d;
-        public static final int tvRetorn=0x7f090009;
-        public static final int tvSoci=0x7f090000;
+        public static final int spActivitat=0x7f090004;
+        public static final int tvActivitat=0x7f090003;
+        public static final int tvCobrat=0x7f090006;
+        public static final int tvLloguer=0x7f090008;
+        public static final int tvMaterial=0x7f09000e;
+        public static final int tvRetorn=0x7f09000a;
+        public static final int tvSoci=0x7f090001;
     }
     public static final class layout {
         public static final int lloguer=0x7f030000;
@@ -67,6 +67,7 @@ public final class R {
         public static final int buscar=0x7f050005;
         public static final int editar=0x7f050003;
         public static final int nueva=0x7f050004;
+        public static final int rellena_campos_idea=0x7f050006;
     }
     public static final class style {
         /** 
