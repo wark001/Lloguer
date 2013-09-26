@@ -39,12 +39,12 @@ public class IdeasDataSource {
 	}
 
 	// Método que insertará una Idea en base de datos
-	public Lloguer createIdea(String tituloIdea, String textoIdea, int importancia, String fecha, String mail, String telefono) {
+	public Lloguer createIdea(String etsoci, String etfianca ) {
 		
 		// Esta clase se usa para almacenar un conjunto de valores que el ContentResolver podrá procesar. 
 		ContentValues valores = new ContentValues();
-		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, tituloIdea);
-		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, textoIdea);
+		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, etsoci);
+		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, etfianca);
 
 		
 		// Inserción en base de datos. El método insert() devolverá la primary key (columna _id)

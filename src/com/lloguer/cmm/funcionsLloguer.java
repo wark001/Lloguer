@@ -157,11 +157,8 @@ public class funcionsLloguer extends Activity {
         return formateador.format(ahora);
     }
 	
-    public void realitza_lloguer(){
-    
-    	//cridar sql
-    	//cridar activitat llista
-    	
+    public void realitza_lloguer(View view){
+    	guardar();	
     }
 
     @Override
@@ -180,7 +177,7 @@ public class funcionsLloguer extends Activity {
 		this.finish();
 	}
 	
-	public void guardar(View view) {
+	public void guardar() {
 		
 		Lloguer intanciaLloguer = new Lloguer();
 		
@@ -228,87 +225,4 @@ public class funcionsLloguer extends Activity {
 		((EditText) findViewById(R.id.editText3)).setText(idea.getTelefono());
 		*/
 	}
-    /*
-     public void guardar(View view) {
-		
-		Idea idea = new Idea();
-		
-		String tituloIdea = ((EditText) findViewById(R.id.tituloIdea)).getText().toString();
-		String textoIdea = ((EditText) findViewById(R.id.textoIdea)).getText().toString();
-		String editText1 = ((EditText) findViewById(R.id.editText1)).getText().toString();
-		String editText2 = ((EditText) findViewById(R.id.editText2)).getText().toString();
-		String editText3 = ((EditText) findViewById(R.id.editText3)).getText().toString();
-		int importancia = ((Spinner) findViewById(R.id.spinnerImportanciaIdea)).getSelectedItemPosition();
-		
-		
-		if (tituloIdea.equals("") || 
-				textoIdea.equals("") || 
-				editText1.equals("") || 
-				editText2.equals("") || 
-				editText3.equals("") )
-			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
-		else {
-			
-			idea.setId(idIdea);
-			idea.setTituloIdea(tituloIdea);
-			idea.setTextoIdea(textoIdea);
-			idea.setImportancia(importancia);
-			
-			//Marc
-			idea.setFecha(editText1);
-			idea.setMail(editText2);
-			idea.setTelefono(editText3);
-			
-			switch (MODO_ACTUAL) {
-			case MODO_NUEVA_IDEA:
-				ideasDataSource.createIdea(tituloIdea, textoIdea, importancia,editText1,editText2,editText3);
-				break;
-			case MODO_EDITAR_IDEA:
-				ideasDataSource.updateIdea(idea);
-				break;
-			default:
-				break;
-			}			
-			
-			// Se vuelve a la actividad anterior, sin invocar a una nueva instancia de la misma.
-			// (Otra opción sería invocar a finish(), ya que esta actividad ya no se 
-			// utilizará hasta que se vuelva a solicitar desde la lista de ideas, aunque sería 
-			// menos eficiente si se consultan muchas ideas)			
-			startActivity(intentIdeasActivity);
-		}
-	}
-     */
 }
-   
-
-/*
-public void guardar(View view) {
-		etFianca = (EditText) findViewById(R.id.etFianca);
-		etSoci = (EditText) findViewById(R.id.etSoci);
-		
-		if (etSoci.getText().toString().equals("") || 
-				etFianca.getText().toString().equals(""))
-			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
-		else {
-			
-			Lloguer intanciaLloguer = new Lloguer(etSoci.getText().toString(), etFianca.getText().toString());
-			
-			switch (MODO_ACTUAL) {
-			case MODO_NUEVA_IDEA:
-				ideasDataSource.createIdea(tituloIdea, textoIdea, importancia,editText1,editText2,editText3);
-				break;
-			case MODO_EDITAR_IDEA:
-				ideasDataSource.updateIdea(idea);
-				break;
-			default:
-				break;
-			}			
-			
-			// Se vuelve a la actividad anterior, sin invocar a una nueva instancia de la misma.
-			// (Otra opción sería invocar a finish(), ya que esta actividad ya no se 
-			// utilizará hasta que se vuelva a solicitar desde la lista de ideas, aunque sería 
-			// menos eficiente si se consultan muchas ideas)			
-			startActivity(intentIdeasActivity);
-		}
-	}
-*/

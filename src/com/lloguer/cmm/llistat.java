@@ -35,7 +35,7 @@ public class llistat extends ListActivity {
         
 		// La lista de items se carga en un array. Los elementos a cargar están
 		// en el archivo strings.xml
-		ideasDataSource = new IdeasDataSource(this);
+/*		ideasDataSource = new IdeasDataSource(this);
 		ideasDataSource.open();
 
 		// Se invoca en onResume a cargarListaIdeas() para solo cargar la lista una vez en cualquier caso
@@ -65,6 +65,7 @@ public class llistat extends ListActivity {
 		
 		// Con este método se asigna el menú contextual (para editar y borrar la idea seleccionada) a la ListView
 		registerForContextMenu(lv);
+		*/
 	}
 	
 	private void cargarListaIdeas() {
@@ -93,8 +94,8 @@ public class llistat extends ListActivity {
 	
 	@Override
 	protected void onResume() {
-		ideasDataSource.open();		
-		cargarListaIdeas();
+	//	ideasDataSource.open();		
+	//	cargarListaIdeas();
 		super.onResume();
 	}
 
@@ -217,12 +218,3 @@ public class llistat extends ListActivity {
 		adapter.notifyDataSetChanged();
 	}
 }
-
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-    
-}*/

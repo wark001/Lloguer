@@ -8,7 +8,7 @@ import android.util.Log;
 public class IdeasDatabaseHelper extends SQLiteOpenHelper {
 
 	// Nombre y versión de la base de datos (será también el nombre del archivo que se generará en el dispositivo)
-	private static final String DATABASE_NAME = "concurso.db";
+	private static final String DATABASE_NAME = "lloguer_material.db";
 	private static final int DATABASE_VERSION = 1;
 	
 	public static final String TABLE_IDEAS = "ideas";
