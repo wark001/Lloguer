@@ -58,6 +58,12 @@ public class funcionsLloguer extends Activity {
         etLloguer=(EditText) findViewById(R.id.etLloguer);
         etRetorn=(EditText) findViewById(R.id.etRetorn);
         etMaterial=(EditText) findViewById(R.id.etMaterial);
+        // bariables a guardar
+        etFianca = (EditText) findViewById(R.id.etFianca);
+        etSoci = (EditText) findViewById(R.id.etSoci);
+      //  etFianca = (EditText) findViewById(R.id.etFianca);
+     //   etSoci = (EditText) findViewById(R.id.etSoci);
+        
         LinearLayout afegirMaterial = (LinearLayout) findViewById(R.id.afegirMaterial);
         
         //
@@ -181,10 +187,12 @@ public class funcionsLloguer extends Activity {
 		
 		Lloguer intanciaLloguer = new Lloguer();
 		
-		etFianca = (EditText) findViewById(R.id.etFianca);
-		etSoci = (EditText) findViewById(R.id.etSoci);
 		
-		if (etSoci.getText().toString().equals("") || 
+		
+		
+        String hola=etSoci.getText().toString();
+        
+		if (hola.equals("") || 
 				etFianca.getText().toString().equals(""))
 			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
 		else {
@@ -194,7 +202,7 @@ public class funcionsLloguer extends Activity {
 			
 			switch (MODO_ACTUAL) {
 			case MODO_NUEVA_IDEA:
-				ideasDataSource.createIdea(etSoci.getText().toString(), etFianca.getText().toString());
+				ideasDataSource.createIdea(hola, etFianca.getText().toString());
 				break;
 			case MODO_EDITAR_IDEA:
 				ideasDataSource.updateIdea(intanciaLloguer);
@@ -217,9 +225,11 @@ public class funcionsLloguer extends Activity {
 		this.idIdea = lloguer.getId();
 		
 		// Se vuelca su información en el formulario
-	/*	((EditText) findViewById(R.id.tituloIdea)).setText(idea.getTituloIdea());
-		((EditText) findViewById(R.id.textoIdea)).setText(idea.getTextoIdea());		
-		((Spinner) findViewById(R.id.spinnerImportanciaIdea)).setSelection(idea.getImportancia());
+	//	etFianca = (EditText) findViewById(R.id.etFianca);
+        etSoci.setText(lloguer.getSoci());
+		etFianca.setText(lloguer.getFianca());
+	//	((EditText) findViewById(R.id.textoIdea)).setText(idea.getTextoIdea());		
+	/*	((Spinner) findViewById(R.id.spinnerImportanciaIdea)).setSelection(idea.getImportancia());
 		((EditText) findViewById(R.id.editText1)).setText(idea.getFecha());
 		((EditText) findViewById(R.id.editText2)).setText(idea.getMail());
 		((EditText) findViewById(R.id.editText3)).setText(idea.getTelefono());

@@ -35,12 +35,12 @@ public class llistat extends ListActivity {
         
 		// La lista de items se carga en un array. Los elementos a cargar están
 		// en el archivo strings.xml
-/*		ideasDataSource = new IdeasDataSource(this);
+		ideasDataSource = new IdeasDataSource(this);
 		ideasDataSource.open();
 
 		// Se invoca en onResume a cargarListaIdeas() para solo cargar la lista una vez en cualquier caso
 		// (al iniciar la actividad y al volver a ella desde lloguer)
-		//cargarListaIdeas();
+		cargarListaIdeas();
 		
 		// Se obtiene la vista tipo lista
 		ListView lv = getListView();
@@ -65,16 +65,16 @@ public class llistat extends ListActivity {
 		
 		// Con este método se asigna el menú contextual (para editar y borrar la idea seleccionada) a la ListView
 		registerForContextMenu(lv);
-		*/
+		
 	}
 	
 	private void cargarListaIdeas() {
 		
 		List<Lloguer> lloguers = ideasDataSource.getAllIdeas();
 		// Cada elemento de la lista será una TextView, definido en el layout
-		// lista_ideas.xml		
+		// element_lloguer.xml		
 		//setListAdapter(new ArrayAdapter<Idea>(this, R.layout.lista_ideas, ideas));
-		setListAdapter(new ArrayAdapter<Lloguer>(this, R.layout.main, lloguers));
+		setListAdapter(new ArrayAdapter<Lloguer>(this, R.layout.element_lloguer, lloguers));
 		
 //		ArrayList<HashMap<String,String>> listaIdeasFormateada = new ArrayList<HashMap<String,String>>();
 //		
@@ -94,8 +94,8 @@ public class llistat extends ListActivity {
 	
 	@Override
 	protected void onResume() {
-	//	ideasDataSource.open();		
-	//	cargarListaIdeas();
+		ideasDataSource.open();		
+		cargarListaIdeas();
 		super.onResume();
 	}
 

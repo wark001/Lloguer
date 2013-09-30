@@ -59,11 +59,11 @@ public class IdeasDataSource {
 				todasLasColumnas, IdeasDatabaseHelper.COLUMN_ID + " = " + idInsertado, null, null, null, null);
 		
 		cursor.moveToFirst();		
-		Lloguer nuevaIdea = cursorAIdea(cursor);
+		Lloguer nouLloguer = cursorAIdea(cursor);
 		
 		// Es importante cerrar el cursor para evitar consumir memoria innecesaria
 		cursor.close();		
-		return nuevaIdea;
+		return nouLloguer;
 	}
 
 	public void deleteIdea(Lloguer lloguer) {
@@ -153,9 +153,9 @@ public class IdeasDataSource {
 		
 		Lloguer lloguer = new Lloguer();
 		lloguer.setId(cursor.getLong(0));
-	/*	lloguer.setTituloIdea(cursor.getString(1));
-		lloguer.setTextoIdea(cursor.getString(2));
-		lloguer.setImportancia(cursor.getInt(3));
+		lloguer.setSoci(cursor.getString(1));
+		lloguer.setFianca(cursor.getString(2));
+	/*	lloguer.setImportancia(cursor.getInt(3));
 		//Marc
 		lloguer.setFecha(cursor.getString(4));
 		lloguer.setMail(cursor.getString(5));

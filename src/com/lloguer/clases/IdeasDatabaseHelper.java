@@ -22,7 +22,7 @@ public class IdeasDatabaseHelper extends SQLiteOpenHelper {
 			+ TABLE_IDEAS + "(" 
 			+ COLUMN_ID + " integer primary key autoincrement, " 
 			+ COLUMN_SOCI + " text not null, " 
-			+ COLUMN_FIANCA  + " text not null, ";
+			+ COLUMN_FIANCA  + " text not null);";
 
 	// Constructor que deberá invocar a super()
 	public IdeasDatabaseHelper(Context context) {
