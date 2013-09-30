@@ -5,11 +5,35 @@ public class Lloguer {
 	private long id;
 	private String soci;
 	private String fianca;
-//	private String cobrat;
-//	private String datall;
-//	private String datad;
-//	private String material;
+	private String cobrat;
+	private String datall;
+	private String datad;
+	private String material;
 	
+	public String getCobrat() {
+		return cobrat;
+	}
+	public void setCobrat(String cobrat) {
+		this.cobrat = cobrat;
+	}
+	public String getDatall() {
+		return datall;
+	}
+	public void setDatall(String datall) {
+		this.datall = datall;
+	}
+	public String getDatad() {
+		return datad;
+	}
+	public void setDatad(String datad) {
+		this.datad = datad;
+	}
+	public String getMaterial() {
+		return material;
+	}
+	public void setMaterial(String material) {
+		this.material = material;
+	}
 	public long getId() {
 		return id;
 	}
@@ -47,6 +71,10 @@ public class Lloguer {
 				iconoImportancia ="1£";
 			*/
 			return "Soci:" + soci 
-					+"\nFiança:" +fianca;
+					+"\nFiança:" +fianca
+					+"\nCobrat:" +cobrat
+					+"\nData Lloguer:" +datall
+					+"\nData Retorn:" +datad
+					+"\nMaterial:" +material;
 		}
 }

@@ -61,8 +61,10 @@ public class funcionsLloguer extends Activity {
         // bariables a guardar
         etFianca = (EditText) findViewById(R.id.etFianca);
         etSoci = (EditText) findViewById(R.id.etSoci);
-      //  etFianca = (EditText) findViewById(R.id.etFianca);
-     //   etSoci = (EditText) findViewById(R.id.etSoci);
+        etCobrat = (EditText) findViewById(R.id.etCobrat);
+        etLloguer = (EditText) findViewById(R.id.etLloguer);
+        etRetorn=(EditText) findViewById(R.id.etRetorn);
+        etMaterial=(EditText) findViewById(R.id.etMaterial);
         
         LinearLayout afegirMaterial = (LinearLayout) findViewById(R.id.afegirMaterial);
         
@@ -186,23 +188,28 @@ public class funcionsLloguer extends Activity {
 	public void guardar() {
 		
 		Lloguer intanciaLloguer = new Lloguer();
-		
-		
-		
-		
-        String hola=etSoci.getText().toString();
         
-		if (hola.equals("") || 
+		if (etSoci.getText().toString().equals("") || 
 				etFianca.getText().toString().equals(""))
 			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
 		else {
 			
 			intanciaLloguer.setSoci(etSoci.getText().toString());//idea
 			intanciaLloguer.setFianca(etFianca.getText().toString());//idea
+			intanciaLloguer.setCobrat(etCobrat.getText().toString());//idea
+			intanciaLloguer.setDatall(etLloguer.getText().toString());//idea
+			intanciaLloguer.setDatad(etRetorn.getText().toString());//idea
+			intanciaLloguer.setMaterial(etMaterial.getText().toString());//idea
 			
 			switch (MODO_ACTUAL) {
 			case MODO_NUEVA_IDEA:
-				ideasDataSource.createIdea(hola, etFianca.getText().toString());
+				ideasDataSource.createIdea(
+						etSoci.getText().toString(), 
+						etFianca.getText().toString(),
+						etCobrat.getText().toString(),
+						etLloguer.getText().toString(),
+						etRetorn.getText().toString(),
+						etMaterial.getText().toString());
 				break;
 			case MODO_EDITAR_IDEA:
 				ideasDataSource.updateIdea(intanciaLloguer);
@@ -228,6 +235,10 @@ public class funcionsLloguer extends Activity {
 	//	etFianca = (EditText) findViewById(R.id.etFianca);
         etSoci.setText(lloguer.getSoci());
 		etFianca.setText(lloguer.getFianca());
+		etCobrat.setText(lloguer.getCobrat());
+		etLloguer.setText(lloguer.getDatall());
+		etRetorn.setText(lloguer.getDatad());
+		etMaterial.setText(lloguer.getMaterial());
 	//	((EditText) findViewById(R.id.textoIdea)).setText(idea.getTextoIdea());		
 	/*	((Spinner) findViewById(R.id.spinnerImportanciaIdea)).setSelection(idea.getImportancia());
 		((EditText) findViewById(R.id.editText1)).setText(idea.getFecha());

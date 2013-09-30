@@ -19,7 +19,10 @@ public class IdeasDataSource {
 			IdeasDatabaseHelper.COLUMN_ID,
 			IdeasDatabaseHelper.COLUMN_SOCI, 
 			IdeasDatabaseHelper.COLUMN_FIANCA, 
-
+			IdeasDatabaseHelper.COLUMN_COBRAT,
+			IdeasDatabaseHelper.COLUMN_DATALL,
+			IdeasDatabaseHelper.COLUMN_DATAD,
+			IdeasDatabaseHelper.COLUMN_MATERIAL
 			};
 
 	// Constructor que inicializa el DAO, 
@@ -39,12 +42,22 @@ public class IdeasDataSource {
 	}
 
 	// Método que insertará una Idea en base de datos
-	public Lloguer createIdea(String etsoci, String etfianca ) {
+	public Lloguer createIdea(String etsoci, 
+			String etfianca,
+			String etCobrat,
+			String etLloguer,
+			String etRetorn,
+			String etMaterial ) {
 		
 		// Esta clase se usa para almacenar un conjunto de valores que el ContentResolver podrá procesar. 
 		ContentValues valores = new ContentValues();
 		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, etsoci);
 		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, etfianca);
+		valores.put(IdeasDatabaseHelper.COLUMN_COBRAT, etCobrat);
+		valores.put(IdeasDatabaseHelper.COLUMN_DATALL, etLloguer);
+		valores.put(IdeasDatabaseHelper.COLUMN_DATAD, etRetorn);
+		valores.put(IdeasDatabaseHelper.COLUMN_MATERIAL, etMaterial);
+		
 
 		
 		// Inserción en base de datos. El método insert() devolverá la primary key (columna _id)
@@ -82,14 +95,20 @@ public class IdeasDataSource {
 		// y se crea un ContentValues con los nuevos valores de la idea
 		long idIdea = lloguer.getId();		
 		ContentValues valores = new ContentValues();
+		
+		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, lloguer.getSoci());
+		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, lloguer.getFianca());
+		valores.put(IdeasDatabaseHelper.COLUMN_COBRAT, lloguer.getCobrat());
+		valores.put(IdeasDatabaseHelper.COLUMN_DATALL, lloguer.getDatall());
+		valores.put(IdeasDatabaseHelper.COLUMN_DATAD, lloguer.getDatad());
+		valores.put(IdeasDatabaseHelper.COLUMN_MATERIAL, lloguer.getMaterial());
 	/*	valores.put(IdeasDatabaseHelper.COLUMN_TITULO_IDEA, lloguer.getTituloIdea());
 		valores.put(IdeasDatabaseHelper.COLUMN_TEXTO_IDEA, lloguer.getTextoIdea());
 		valores.put(IdeasDatabaseHelper.COLUMN_IMPORTANCIA, lloguer.getImportancia());
-		
 		//Marc
-				valores.put(IdeasDatabaseHelper.COLUMN_FECHA, lloguer.getFecha());
-				valores.put(IdeasDatabaseHelper.COLUMN_MAIL, lloguer.getFecha());
-				valores.put(IdeasDatabaseHelper.COLUMN_TELEFONO, lloguer.getFecha());
+		valores.put(IdeasDatabaseHelper.COLUMN_FECHA, lloguer.getFecha());
+		valores.put(IdeasDatabaseHelper.COLUMN_MAIL, lloguer.getFecha());
+		valores.put(IdeasDatabaseHelper.COLUMN_TELEFONO, lloguer.getFecha());
 	*/			
 		baseDeDatos.update(IdeasDatabaseHelper.TABLE_IDEAS, valores, IdeasDatabaseHelper.COLUMN_ID + " = " + idIdea, null);
 
@@ -155,11 +174,10 @@ public class IdeasDataSource {
 		lloguer.setId(cursor.getLong(0));
 		lloguer.setSoci(cursor.getString(1));
 		lloguer.setFianca(cursor.getString(2));
-	/*	lloguer.setImportancia(cursor.getInt(3));
-		//Marc
-		lloguer.setFecha(cursor.getString(4));
-		lloguer.setMail(cursor.getString(5));
-		lloguer.setTelefono(cursor.getString(6));
-	*/	return lloguer;
+		lloguer.setCobrat(cursor.getString(3));
+		lloguer.setDatall(cursor.getString(4));
+		lloguer.setDatad(cursor.getString(5));
+		lloguer.setMaterial(cursor.getString(6));
+		return lloguer;
 	}
 }
