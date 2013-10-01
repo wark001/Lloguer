@@ -193,6 +193,6 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:text="Realitzar lloguer" 
-	        android:onClick="realitza_lloguer"/>
+	        android:onClick="guardar"/>
     
 </LinearLayout>

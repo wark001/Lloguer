@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -165,9 +164,9 @@ public class funcionsLloguer extends Activity {
         return formateador.format(ahora);
     }
 	
-    public void realitza_lloguer(View view){
+   /* public void realitza_lloguer(View view){
     	guardar();	
-    }
+    }*/
 
     @Override
 	protected void onResume() {
@@ -185,7 +184,7 @@ public class funcionsLloguer extends Activity {
 		this.finish();
 	}
 	
-	public void guardar() {
+	public void guardar(View view) {
 		
 		Lloguer intanciaLloguer = new Lloguer();
         
@@ -194,17 +193,21 @@ public class funcionsLloguer extends Activity {
 			Toast.makeText(this, getString(R.string.rellena_campos_idea), Toast.LENGTH_LONG).show();
 		else {
 			
+			intanciaLloguer.setId(idIdea);
 			intanciaLloguer.setSoci(etSoci.getText().toString());//idea
 			intanciaLloguer.setFianca(etFianca.getText().toString());//idea
 			intanciaLloguer.setCobrat(etCobrat.getText().toString());//idea
 			intanciaLloguer.setDatall(etLloguer.getText().toString());//idea
 			intanciaLloguer.setDatad(etRetorn.getText().toString());//idea
 			intanciaLloguer.setMaterial(etMaterial.getText().toString());//idea
+			intanciaLloguer.setTipus_activitat(spActivitat.getSelectedItemPosition());
+		//	int importancia = ((Spinner) findViewById(R.id.spinnerImportanciaIdea)).getSelectedItemPosition();
 			
 			switch (MODO_ACTUAL) {
 			case MODO_NUEVA_IDEA:
 				ideasDataSource.createIdea(
 						etSoci.getText().toString(), 
+						spActivitat.getSelectedItemPosition(),
 						etFianca.getText().toString(),
 						etCobrat.getText().toString(),
 						etLloguer.getText().toString(),
@@ -234,6 +237,8 @@ public class funcionsLloguer extends Activity {
 		// Se vuelca su información en el formulario
 	//	etFianca = (EditText) findViewById(R.id.etFianca);
         etSoci.setText(lloguer.getSoci());
+        spActivitat.setSelection(lloguer.getTipus_activitat());
+      //  spActivitat.getSelectedItemPosition(),
 		etFianca.setText(lloguer.getFianca());
 		etCobrat.setText(lloguer.getCobrat());
 		etLloguer.setText(lloguer.getDatall());

@@ -9,11 +9,12 @@ public class IdeasDatabaseHelper extends SQLiteOpenHelper {
 
 	// Nombre y versión de la base de datos (será también el nombre del archivo que se generará en el dispositivo)
 	private static final String DATABASE_NAME = "lloguer_material.db";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 1;
 	
 	public static final String TABLE_IDEAS = "ideas";
 	public static final String COLUMN_ID = "_id";
 	public static final String COLUMN_SOCI = "nom_soci";
+	public static final String COLUMN_TIPUS_ACTIVITAT = "tipus_activitat";
 	public static final String COLUMN_FIANCA = "fianca_material";
 	public static final String COLUMN_COBRAT = "cobrat";
 	public static final String COLUMN_DATALL = "data_lloguer";
@@ -26,6 +27,7 @@ public class IdeasDatabaseHelper extends SQLiteOpenHelper {
 			+ TABLE_IDEAS + "(" 
 			+ COLUMN_ID + " integer primary key autoincrement, " 
 			+ COLUMN_SOCI + " text not null, " 
+			+ COLUMN_TIPUS_ACTIVITAT + " integer not null, "
 			+ COLUMN_FIANCA  + " text not null, "
 			+ COLUMN_COBRAT + " text not null, " 
 			+ COLUMN_DATALL + " text not null, " 

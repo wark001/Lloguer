@@ -17,7 +17,8 @@ public class IdeasDataSource {
 	private IdeasDatabaseHelper dbHelper;
 	private String[] todasLasColumnas = { 
 			IdeasDatabaseHelper.COLUMN_ID,
-			IdeasDatabaseHelper.COLUMN_SOCI, 
+			IdeasDatabaseHelper.COLUMN_SOCI,
+			IdeasDatabaseHelper.COLUMN_TIPUS_ACTIVITAT,
 			IdeasDatabaseHelper.COLUMN_FIANCA, 
 			IdeasDatabaseHelper.COLUMN_COBRAT,
 			IdeasDatabaseHelper.COLUMN_DATALL,
@@ -42,7 +43,9 @@ public class IdeasDataSource {
 	}
 
 	// Método que insertará una Idea en base de datos
-	public Lloguer createIdea(String etsoci, 
+	public Lloguer createIdea(
+			String etsoci,
+			int tipusActivitat,
 			String etfianca,
 			String etCobrat,
 			String etLloguer,
@@ -52,6 +55,7 @@ public class IdeasDataSource {
 		// Esta clase se usa para almacenar un conjunto de valores que el ContentResolver podrá procesar. 
 		ContentValues valores = new ContentValues();
 		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, etsoci);
+		valores.put(IdeasDatabaseHelper.COLUMN_TIPUS_ACTIVITAT, tipusActivitat);
 		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, etfianca);
 		valores.put(IdeasDatabaseHelper.COLUMN_COBRAT, etCobrat);
 		valores.put(IdeasDatabaseHelper.COLUMN_DATALL, etLloguer);
@@ -97,11 +101,13 @@ public class IdeasDataSource {
 		ContentValues valores = new ContentValues();
 		
 		valores.put(IdeasDatabaseHelper.COLUMN_SOCI, lloguer.getSoci());
+		valores.put(IdeasDatabaseHelper.COLUMN_TIPUS_ACTIVITAT, lloguer.getTipus_activitat());
 		valores.put(IdeasDatabaseHelper.COLUMN_FIANCA, lloguer.getFianca());
 		valores.put(IdeasDatabaseHelper.COLUMN_COBRAT, lloguer.getCobrat());
 		valores.put(IdeasDatabaseHelper.COLUMN_DATALL, lloguer.getDatall());
 		valores.put(IdeasDatabaseHelper.COLUMN_DATAD, lloguer.getDatad());
 		valores.put(IdeasDatabaseHelper.COLUMN_MATERIAL, lloguer.getMaterial());
+		
 	/*	valores.put(IdeasDatabaseHelper.COLUMN_TITULO_IDEA, lloguer.getTituloIdea());
 		valores.put(IdeasDatabaseHelper.COLUMN_TEXTO_IDEA, lloguer.getTextoIdea());
 		valores.put(IdeasDatabaseHelper.COLUMN_IMPORTANCIA, lloguer.getImportancia());
@@ -173,11 +179,12 @@ public class IdeasDataSource {
 		Lloguer lloguer = new Lloguer();
 		lloguer.setId(cursor.getLong(0));
 		lloguer.setSoci(cursor.getString(1));
-		lloguer.setFianca(cursor.getString(2));
-		lloguer.setCobrat(cursor.getString(3));
-		lloguer.setDatall(cursor.getString(4));
-		lloguer.setDatad(cursor.getString(5));
-		lloguer.setMaterial(cursor.getString(6));
+		lloguer.setTipus_activitat(cursor.getShort(2));
+		lloguer.setFianca(cursor.getString(3));
+		lloguer.setCobrat(cursor.getString(4));
+		lloguer.setDatall(cursor.getString(5));
+		lloguer.setDatad(cursor.getString(6));
+		lloguer.setMaterial(cursor.getString(7));
 		return lloguer;
 	}
 }

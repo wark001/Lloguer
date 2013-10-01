@@ -9,7 +9,14 @@ public class Lloguer {
 	private String datall;
 	private String datad;
 	private String material;
+	private int tipus_activitat;
 	
+	public int getTipus_activitat() {
+		return tipus_activitat;
+	}
+	public void setTipus_activitat(int tipus_activitat) {
+		this.tipus_activitat = tipus_activitat;
+	}
 	public String getCobrat() {
 		return cobrat;
 	}
@@ -61,16 +68,17 @@ public class Lloguer {
 		@Override
 		public String toString() {
 			
-			String iconoImportancia = "";
-			/*
-			if (importancia == 0) // Alta
-				iconoImportancia = "100€";
-			else if (importancia == 1)
-				iconoImportancia = "50$";
-			else if (importancia==2)
-				iconoImportancia ="1£";
-			*/
+			String tipusActivitat = "";
+			
+			if (tipus_activitat == 0) // Alta
+				tipusActivitat = "Ent. Exp. Entrenament expedicions, no es cobra lloguer.";
+			else if (tipus_activitat == 1)
+				tipusActivitat = "CMM Activitats programades pel C.M.M., no es cobra lloguer.";
+			else if (tipus_activitat==2)
+				tipusActivitat ="Part. Es cobra lloguer";
+			
 			return "Soci:" + soci 
+					+"\nTipus Activitat:" +tipusActivitat
 					+"\nFiança:" +fianca
 					+"\nCobrat:" +cobrat
 					+"\nData Lloguer:" +datall
