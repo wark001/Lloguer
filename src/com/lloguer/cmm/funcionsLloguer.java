@@ -17,12 +17,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RemoteViews;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lloguer.clases.Lloguer;
 import com.lloguer.clases.IdeasDataSource;
+import com.lloguer.clases.Lloguer;
 
 public class funcionsLloguer extends Activity {
 
@@ -32,7 +33,7 @@ public class funcionsLloguer extends Activity {
 	//variables del layout
 	TextView tvSoci,tvActivitat,tvFianca,tvCobrat,tvLloguer,tvRetorn,tvMaterial;
 	EditText etSoci,etActivitat,etFianca,etCobrat,etLloguer,etRetorn,etMaterial;
-	Button btAddMaterial,btMaterialBack ,btLloguer ,btCancel;
+	Button btAddMaterial,btMaterialBack ,btLloguer ,btCancel, btEraseDataLloguer, btEnterDataLloguer, btEnterDataRetorn;
 	Spinner spActivitat;
 	LinearLayout afegirMaterial;
 	
@@ -57,7 +58,8 @@ public class funcionsLloguer extends Activity {
         etLloguer=(EditText) findViewById(R.id.etLloguer);
         etRetorn=(EditText) findViewById(R.id.etRetorn);
         etMaterial=(EditText) findViewById(R.id.etMaterial);
-        // bariables a guardar
+        btLloguer=(Button) findViewById(R.id.btLloguer);
+        // variables a guardar
         etFianca = (EditText) findViewById(R.id.etFianca);
         etSoci = (EditText) findViewById(R.id.etSoci);
         etCobrat = (EditText) findViewById(R.id.etCobrat);
@@ -86,6 +88,8 @@ public class funcionsLloguer extends Activity {
 		
         if (MODO_ACTUAL == MODO_EDITAR_IDEA){        		
         	cargarIdea(bundle.getLong(ID_IDEA));
+        	//btLloguer.setText(ID_IDEA, type);
+        	btLloguer.setText("Modificar Lloguer");
         }
     }
 
@@ -150,11 +154,25 @@ public class funcionsLloguer extends Activity {
 	public void borrarDataRetorn(View v) {
 		etRetorn.setText("");	
 	}
+	public void borrarDataLloguer(View v) {
+		etLloguer.setText("");	
+	}
 	
 	//afegeix la data a la qual es va tornar un material i no permet modifica
 	public void dataUnMaterial(View v){
-		//etMaterial
-		etMaterial.setText(etMaterial.getText().toString()+" Material tornat el: "+getFechaActual().toString());
+		//etMaterial.setText(etMaterial.getText().toString()+regularExpression+getFechaActual().toString());
+		String regularExpression="Material tornat el: ";
+		String text="";
+		if (etMaterial.getText().toString().length()>=18){
+			text=etMaterial.getText().toString().substring(0, 20);
+		}
+			if (text.equals(regularExpression)){
+				//etMaterial.setText(etMaterial.getText().toString()+"2");
+			}else{
+				etMaterial.setText(regularExpression+getFechaActual().toString()+etMaterial.getText().toString());
+			//	etMaterial.setText(etMaterial.getText().toString()+"/"+text+"="+regularExpression);
+			}
+		
 	}
 	//Metodo usado para obtener la fecha actual
     //@return Retorna un <b>STRING</b> con la fecha actual formato "dd-MM-yyyy"
@@ -230,6 +248,7 @@ public class funcionsLloguer extends Activity {
 	}
 	
 	public void cargarIdea(long idIdea) {
+		//btLloguer.setText("Modificar Lloguer");
 		// Se obtiene la idea a editar
 		Lloguer lloguer = ideasDataSource.getIdea(idIdea);
 		this.idIdea = lloguer.getId();

@@ -92,6 +92,16 @@ public class llistat extends ListActivity {
 //				new int[] {R.id.texto_lista_1, R.id.texto_lista_2}));
 	}
 	
+	private void exportarLlistat() {
+		
+		List<Lloguer> lloguers = ideasDataSource.getAllIdeas();
+		// Cada elemento de la lista será una TextView, definido en el layout
+		// element_lloguer.xml		
+		//setListAdapter(new ArrayAdapter<Idea>(this, R.layout.lista_ideas, ideas));
+		setListAdapter(new ArrayAdapter<Lloguer>(this, R.layout.element_lloguer, lloguers));
+		
+	}
+	
 	@Override
 	protected void onResume() {
 		ideasDataSource.open();		
@@ -218,3 +228,4 @@ public class llistat extends ListActivity {
 		adapter.notifyDataSetChanged();
 	}
 }
+//   http://stackoverflow.com/questions/4134875/android-listactivity-row-color-based-on-object-state

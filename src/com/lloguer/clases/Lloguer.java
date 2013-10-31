@@ -10,7 +10,14 @@ public class Lloguer {
 	private String datad;
 	private String material;
 	private int tipus_activitat;
+	/*private int tornat;
 	
+	public int getTornat() {
+		return tornat;
+	}
+	public void setTornat(int tornat) {
+		this.tornat = tornat;
+	}*/
 	public int getTipus_activitat() {
 		return tipus_activitat;
 	}
