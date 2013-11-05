@@ -8,11 +8,17 @@
     <string name="nueva">Nova</string>
     <string name="buscar">Buscar</string>
     <string name="rellena_campos_idea">Omple tots els camps</string>
+    <string name="impoExpo">Importar/Exportar</string>
+    
 
     <string-array name="tipusActivitat">
         <item >Ent. Exp. Entrenament expedicions, no es cobra lloguer.</item>
         <item >CMM Activitats programades pel C.M.M., no es cobra lloguer.</item>
         <item >Part. Es cobra lloguer</item>
     </string-array>
+    
+    <string name="archivo_guardado">Arxiu Guardat</string>
+	<string name="error_fnf">fnf</string>
+	<string name="error_io">iot</string>
     
 </resources>

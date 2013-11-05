@@ -153,6 +153,9 @@ public class llistat extends ListActivity {
         case R.id.buscar:
         	buscarIdea();
         	return true;
+        case R.id.impoExpo:
+        	impoExpo();
+        	return true;
         default:
             return super.onOptionsItemSelected(item);
         }
@@ -201,6 +204,9 @@ public class llistat extends ListActivity {
 		InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE); 
 		inputManager.showSoftInput(getListView(), InputMethodManager.SHOW_FORCED); 
 	}
+	private void impoExpo(){
+		ExportarLloguers exportat=new ExportarLloguers();
+	}
 	
 	private void editarIdea(long id) {
 		
@@ -227,5 +233,7 @@ public class llistat extends ListActivity {
 		adapter.remove(lloguer);
 		adapter.notifyDataSetChanged();
 	}
+	
+	
 }
 //   http://stackoverflow.com/questions/4134875/android-listactivity-row-color-based-on-object-state

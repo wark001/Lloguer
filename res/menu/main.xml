@@ -10,6 +10,11 @@
         android:title="@string/buscar" 
       
         android:showAsAction="ifRoom">        
-    </item>    
+    </item>  
+    <item 
+        android:id="@+id/impoExpo" 
+        android:title="@string/impoExpo" 
+        android:showAsAction="always">        
+    </item>   
     <!-- android:icon="@drawable/search" -->  
 </menu>

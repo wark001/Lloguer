@@ -28,7 +28,7 @@ public final class R {
     }
     public static final class id {
         public static final int afegirMaterial=0x7f090012;
-        public static final int borrar=0x7f09001c;
+        public static final int borrar=0x7f09001d;
         public static final int btAddMaterial=0x7f090015;
         public static final int btCancel=0x7f090001;
         public static final int btEnterDataLloguer=0x7f09000b;
@@ -39,13 +39,14 @@ public final class R {
         public static final int btMaterialBack=0x7f090016;
         public static final int buscar=0x7f09001a;
         public static final int button1=0x7f090018;
-        public static final int editar=0x7f09001b;
+        public static final int editar=0x7f09001c;
         public static final int etCobrat=0x7f090009;
         public static final int etFianca=0x7f090007;
         public static final int etLloguer=0x7f09000c;
         public static final int etMaterial=0x7f090014;
         public static final int etRetorn=0x7f090010;
         public static final int etSoci=0x7f090003;
+        public static final int impoExpo=0x7f09001b;
         public static final int list_content=0x7f090000;
         public static final int nueva=0x7f090019;
         public static final int spActivitat=0x7f090005;
@@ -69,9 +70,13 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int archivo_guardado=0x7f050008;
         public static final int borrar=0x7f050002;
         public static final int buscar=0x7f050005;
         public static final int editar=0x7f050003;
+        public static final int error_fnf=0x7f050009;
+        public static final int error_io=0x7f05000a;
+        public static final int impoExpo=0x7f050007;
         public static final int nueva=0x7f050004;
         public static final int rellena_campos_idea=0x7f050006;
     }
